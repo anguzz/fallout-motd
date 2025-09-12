@@ -22,5 +22,12 @@ fi
 ln -s "$MOTD_DIR/main.sh" "$TARGET"
 chmod +x "$MOTD_DIR/main.sh"
 
+# Clear static MOTD so only Fallout MOTD shows
+if [ -f /etc/motd ]; then
+  echo "[*] Clearing /etc/motd (static banner)"
+  : > /etc/motd
+fi
+
+
 echo "[+] Fallout MOTD installed successfully!"
 echo "[i] Test with: run-parts /etc/update-motd.d/"
