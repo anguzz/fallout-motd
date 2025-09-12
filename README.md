@@ -14,7 +14,26 @@ This project reimagines the classic [FalconStats](https://github.com/Heholord/Fa
 - Configurable via `config.json` (enable/disable modules)  
 - GitHub-ready with MIT license, changelog, and screenshots  
 
+### Setup
 
+- Github setup
+
+```bash
+apt install -y git
+git clone https://github.com/anguzz/fallout-motd.git
+cd fallout-motd
+./install.sh 
+```
+ 
+ - tarball setup
+ 
+ ```bash
+curl -L https://github.com/anguzz/fallout-motd/archive/refs/heads/main.tar.gz -o fallout-motd.tar.gz
+tar -xzf fallout-motd.tar.gz
+mv fallout-motd-main fallout-motd
+cd fallout-motd
+./install.sh install
+```
 
 ## Project structure
 ```
