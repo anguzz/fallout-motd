@@ -1,0 +1,9 @@
+{
+  "modules": [
+    { "name": "uptime", "enabled": true },
+    { "name": "memory", "enabled": true },
+    { "name": "vms", "enabled": true },
+    { "name": "storage", "enabled": true },
+    { "name": "quorum", "enabled": true }
+  ]
+}
