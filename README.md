@@ -1,5 +1,6 @@
 # fallout-motd
 
+<img width="1523" height="830" alt="image" src="https://github.com/user-attachments/assets/13fc5095-eea0-444d-b82c-52fdde9cc1d8" />
 
 A Fallout-themed Message of the Day for **Debian 12 / Proxmox VE 8.x** hosts.  
 
@@ -14,7 +15,26 @@ This project reimagines the classic [FalconStats](https://github.com/Heholord/Fa
 - Configurable via `config.json` (enable/disable modules)  
 - GitHub-ready with MIT license, changelog, and screenshots  
 
+### Setup
 
+- Github setup
+
+```bash
+apt install -y git
+git clone https://github.com/anguzz/fallout-motd.git
+cd fallout-motd
+./install.sh 
+```
+ 
+ - tarball setup
+ 
+ ```bash
+curl -L https://github.com/anguzz/fallout-motd/archive/refs/heads/main.tar.gz -o fallout-motd.tar.gz
+tar -xzf fallout-motd.tar.gz
+mv fallout-motd-main fallout-motd
+cd fallout-motd
+./install.sh install
+```
 
 ## Project structure
 ```
