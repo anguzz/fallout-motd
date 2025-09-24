@@ -1,5 +1,6 @@
 # fallout-motd
 
+<img width="1455" height="808" alt="image" src="https://github.com/user-attachments/assets/ed14dc01-759a-4eda-857e-d57ec50c02da" />
 
 A Fallout-themed Message of the Day for **Debian 12 / Proxmox VE 8.x** hosts.  
 
