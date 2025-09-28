@@ -76,15 +76,27 @@ The plus side is the Fallout MOTD will follow you to any device you sign into wi
 
 ---
 
+Here’s a cleaned-up version of that section, with clearer wording and the Win10/Win11 difference spelled out:
+
+---
+
 ## Optional: Windows Terminal Customization
 
-You can further tweak the look of Windows Terminal via `settings.json`:
+If you’re using the **Windows Terminal app** (pre-installed on Windows 11, optional on Windows 10), you can customize its look via a `settings.json` file.
+
+For Microsoft Store installs, the file is usually here:
 
 ```plaintext
 C:\Users\<username>\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 ```
 
-Example (fonts + opacity):
+Other install types (Preview build, unpacked/winget) may place it under:
+
+```plaintext
+C:\Users\<username>\AppData\Local\Microsoft\Windows Terminal\settings.json
+```
+
+Example customization (fonts + opacity):
 
 ```json
 "profiles": {
@@ -94,4 +106,7 @@ Example (fonts + opacity):
   }
 }
 ```
+
+If you’re using the **classic console host** (`conhost.exe`, what you get by default on Windows 10 with `powershell.exe` or `cmd.exe`), there is no JSON file.
+You can only adjust appearance via the application’s **Properties** dialog (right-click title bar > Properties).
 
