@@ -76,7 +76,6 @@ The plus side is the Fallout MOTD will follow you to any device you sign into wi
 
 ---
 
-Here’s a cleaned-up version of that section, with clearer wording and the Win10/Win11 difference spelled out:
 
 ---
 
