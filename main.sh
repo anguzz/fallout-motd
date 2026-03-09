@@ -2,21 +2,16 @@
 # Fallout MOTD - main.sh
 
 # ----- Safety & env -----
-# Require bash (dash/sh will break functions)
 if [ -z "${BASH_VERSINFO:-}" ]; then
   echo "This script must be run with bash. Use: bash ./main.sh"
   exit 1
 fi
+
 export LANG="${LANG:-C.UTF-8}"
 
-#!/usr/bin/env bash
-# Fallout MOTD - main.sh
-
 # -----------------------------
-# Settings
+# Resolve script directory
 # -----------------------------
-# Resolve the directory of this script, even if called via symlink
-
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
   DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
@@ -32,13 +27,14 @@ SCRIPTS_DIR="$MOTD_DIR/scripts"
 CRT_GREEN='\033[92m'
 RESET='\033[0m'
 
-# Symbols (Unicode)
-RAD=$'\u2622'    # ☢
-WARN=$'\u26A0'   # ⚠
-CHECK=$'\u2714'  # ✔
-CROSS=$'\u2716'  # ✖
+# Symbols
+RAD=$'\u2622'
+WARN=$'\u26A0'
+CHECK=$'\u2714'
+CROSS=$'\u2716'
 
 # ----- Functions -----
+
 draw_header() {
   printf "%b" "${CRT_GREEN}"
   cat <<'EOF'
@@ -55,7 +51,6 @@ EOF
 }
 
 list_modules() {
-  # Prefer config.json via jq; otherwise run all *.sh in scripts/
   if command -v jq >/dev/null 2>&1 && [ -f "$CONFIG_FILE" ]; then
     jq -r '.modules[] | select(.enabled==true) | .name' "$CONFIG_FILE"
   elif [ -d "$SCRIPTS_DIR" ]; then
@@ -67,6 +62,7 @@ list_modules() {
 run_module() {
   local module="$1"
   local script="${SCRIPTS_DIR}/${module}.sh"
+
   if [ -x "$script" ]; then
     printf "%b%s %s %s%b\n" "${CRT_GREEN}" "${RAD}" "${module^^}" "${RAD}" "${RESET}"
     "$script" || printf "%b${WARN}[WARN]%b Module '%s' exited non-zero.\n" "${CRT_GREEN}" "${RESET}" "$module"
@@ -78,7 +74,10 @@ run_module() {
 
 # ----- Main -----
 main() {
-  # TERM can be empty in PVE login hooks; set a safe default
+
+  # Ensure modules are executable (prevents git permission issues)
+  chmod +x "$SCRIPTS_DIR"/*.sh 2>/dev/null
+
   : "${TERM:=xterm-256color}"
   command -v tput >/dev/null 2>&1 && tput cols >/dev/null 2>&1 && clear || true
 
@@ -90,7 +89,6 @@ main() {
     return 0
   fi
 
-  # Build module array
   mapfile -t MODULES < <(list_modules || true)
 
   if [ "${#MODULES[@]}" -eq 0 ]; then
