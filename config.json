@@ -4,8 +4,7 @@
     { "name": "memory", "enabled": true },
     { "name": "vms", "enabled": true },
     { "name": "storage", "enabled": true },
-    { "name": "quorum", "enabled": true }
+    { "name": "quorum", "enabled": true },
     { "name": "network", "enabled": true }
-
   ]
 }
