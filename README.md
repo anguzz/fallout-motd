@@ -56,7 +56,6 @@ fallout-motd/
 
 ##  Planned Modules 
 - **cpu.sh** → CPU usage 
-- **network.sh** → Interfaces, IPs, and traffic stats  
 - **zpool.sh** → ZFS pool health and capacity  
 - **docker.sh** → Running Docker containers and statuses  
 - **services.sh** → Systemd service health checks  
